@@ -1,4 +1,4 @@
-package fun.deepsky.springboot.batch.domain;
+package fun.deepsky.springboot.dbtodb.domain;
 
 import javax.validation.constraints.Size;
 

@@ -1,4 +1,4 @@
-package fun.deepsky.springboot.batch;
+package fun.deepsky.springboot.filetodb;
 
 import javax.sql.DataSource;
 
@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import fun.deepsky.springboot.batch.domain.Person;
+import fun.deepsky.springboot.filetodb.domain.Person;
 
 @Configuration
 @EnableBatchProcessing

@@ -1,9 +1,9 @@
-package fun.deepsky.springboot.batch;
+package fun.deepsky.springboot.dbtodb;
 
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 
-public class CsvJobListener implements JobExecutionListener {
+public class DbJobListener implements JobExecutionListener {
 
 	long startTime;
 	long endTime;

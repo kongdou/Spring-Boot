@@ -1,4 +1,4 @@
-package fun.deepsky.springboot.batch;
+package fun.deepsky.springboot.dbtodb;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
 import org.springframework.beans.factory.InitializingBean;
 
-public class CsvBeanValidator<T> implements Validator<T>, InitializingBean {
+public class DbBeanValidator<T> implements Validator<T>, InitializingBean {
 
 	private javax.validation.Validator validator;
 
@@ -34,7 +34,5 @@ public class CsvBeanValidator<T> implements Validator<T>, InitializingBean {
 			}
 			throw new ValidationException(message.toString());
 		}
-
 	}
-
 }

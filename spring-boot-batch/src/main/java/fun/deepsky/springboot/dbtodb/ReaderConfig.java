@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -14,6 +15,9 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
+import org.springframework.batch.core.scope.context.ChunkContext;
+import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -22,9 +26,12 @@ import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean;
 import org.springframework.batch.item.validator.Validator;
+import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import fun.deepsky.springboot.filetodb.domain.Person;
@@ -120,8 +127,20 @@ public class ReaderConfig {
 	public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer,
 			ItemProcessor<Person, Person> processor) {
 
-		return stepBuilderFactory.get("step1").<Person, Person>chunk(65000).reader(reader).processor(processor)
-				.writer(writer).build();
+		ThreadPoolTaskExecutor t = new ThreadPoolTaskExecutor();
+		t.setCorePoolSize(5);
+		t.setMaxPoolSize(15);
+		
+		Tasklet tasklet = new Tasklet() {
+			@Override
+			public RepeatStatus execute(StepContribution arg0, ChunkContext arg1) throws Exception {
+				System.out.println("BBBBB");
+				return null;
+			}
+		};
+		StepBuilder stepBuilder = stepBuilderFactory.get("step1");
+		stepBuilder.tasklet(tasklet).throttleLimit(5);
+		return stepBuilder.<Person,Person>chunk(1).reader(reader).processor(processor).writer(writer).build();
 
 	}
 

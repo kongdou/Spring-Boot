@@ -1,0 +1,13 @@
+
+spring-boot-batch/.DS_Store
+spring-boot-batch/src/.DS_Store
+spring-boot-batch/src/main/.DS_Store
+spring-boot-batch/src/main/java/.DS_Store
+spring-boot-batch/src/main/java/fun/.DS_Store
+spring-boot-batch/src/main/java/fun/deepsky/.DS_Store
+*.prefs
+spring-boot-batch/src/test/.DS_Store
+spring-boot-batch/.settings/org.eclipse.core.resources.prefs
+.DS_Store
+*.prefs
+spring-boot-batch/.settings/org.eclipse.core.resources.prefs

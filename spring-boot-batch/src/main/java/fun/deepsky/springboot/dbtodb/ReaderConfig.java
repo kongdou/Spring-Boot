@@ -126,21 +126,7 @@ public class ReaderConfig {
 	@Bean
 	public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer,
 			ItemProcessor<Person, Person> processor) {
-
-		ThreadPoolTaskExecutor t = new ThreadPoolTaskExecutor();
-		t.setCorePoolSize(5);
-		t.setMaxPoolSize(15);
-		
-		Tasklet tasklet = new Tasklet() {
-			@Override
-			public RepeatStatus execute(StepContribution arg0, ChunkContext arg1) throws Exception {
-				System.out.println("BBBBB");
-				return null;
-			}
-		};
-		StepBuilder stepBuilder = stepBuilderFactory.get("step1");
-		stepBuilder.tasklet(tasklet).throttleLimit(5);
-		return stepBuilder.<Person,Person>chunk(1).reader(reader).processor(processor).writer(writer).build();
+		return stepBuilderFactory.get("step1").<Person,Person>chunk(1).reader(reader).processor(processor).writer(writer).build();
 
 	}
 

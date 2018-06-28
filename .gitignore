@@ -11,3 +11,5 @@ spring-boot-batch/.settings/org.eclipse.core.resources.prefs
 .DS_Store
 *.prefs
 spring-boot-batch/.settings/org.eclipse.core.resources.prefs
+spring-boot-quartz/.classpath
+spring-boot-quartz/.project

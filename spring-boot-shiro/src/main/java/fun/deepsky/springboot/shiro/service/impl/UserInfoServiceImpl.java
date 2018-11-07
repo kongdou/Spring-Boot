@@ -16,7 +16,8 @@ public class UserInfoServiceImpl implements UserInfoService{
     
 	@Override
 	public UserInfo findByUsername(String username) {
-		return userInfoDao.getByUserName(username);
+		UserInfo userInfo = userInfoDao.getByUsername(username);
+		return userInfo;
 	}
 
 }

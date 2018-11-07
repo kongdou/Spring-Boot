@@ -6,5 +6,5 @@ import fun.deepsky.springboot.shiro.entity.UserInfo;
 
 public interface UserInfoDao extends CrudRepository<UserInfo, String>{
 
-	public UserInfo getByUserName(String username);
+	public UserInfo getByUsername(String username);
 }

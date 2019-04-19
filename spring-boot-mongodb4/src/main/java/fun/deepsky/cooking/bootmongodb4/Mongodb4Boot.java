@@ -1,4 +1,4 @@
-package org.jdonee.cooking.bootmongodb4;
+package fun.deepsky.cooking.bootmongodb4;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
@@ -13,7 +13,6 @@ import javax.annotation.PostConstruct;
 
 import org.bson.Document;
 import org.bson.types.Decimal128;
-import org.jdonee.cooking.bootmongodb4.entity.Person;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +58,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
+import fun.deepsky.cooking.bootmongodb4.entity.Person;
 import io.micrometer.core.instrument.MeterRegistry;
 import lombok.Data;
 import lombok.val;
@@ -84,6 +84,7 @@ public class Mongodb4Boot {
 	@Autowired
 	ReactiveMongoOperations reactiveOperation;
 
+	
 	public class Decimal128Serializer extends JsonSerializer<Decimal128> {
 		@Override
 		public void serialize(Decimal128 decimal128, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
@@ -98,6 +99,8 @@ public class Mongodb4Boot {
 			return new Decimal128(new BigDecimal(jsonParser.getText()));
 		}
 	}
+	
+	
 
 	/**
 	 * 自定义MongoDB对象映射调整

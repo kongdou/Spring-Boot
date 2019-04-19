@@ -1,4 +1,4 @@
-package org.jdonee.cooking.bootmongodb4;
+package fun.deepsky.cooking.bootmongodb4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

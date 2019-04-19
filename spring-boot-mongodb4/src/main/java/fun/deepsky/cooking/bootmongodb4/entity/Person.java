@@ -1,13 +1,13 @@
-package org.jdonee.cooking.bootmongodb4.entity;
+package fun.deepsky.cooking.bootmongodb4.entity;
 
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import fun.deepsky.cooking.bootmongodb4.Mongodb4Boot.Decimal128Deserializer;
+import fun.deepsky.cooking.bootmongodb4.Mongodb4Boot.Decimal128Serializer;
 import org.bson.types.Decimal128;
-import org.jdonee.cooking.bootmongodb4.Mongodb4Boot.Decimal128Deserializer;
-import org.jdonee.cooking.bootmongodb4.Mongodb4Boot.Decimal128Serializer;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AccessLevel;
@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Document
 @Data

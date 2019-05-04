@@ -45,7 +45,7 @@ public class CsvBatchConfig {
 			{
 				setLineTokenizer(new DelimitedLineTokenizer() {
 					{
-						setNames(new String[] { "name", "age", "naton",
+						setNames(new String[] { "name", "age", "nation",
 								"address" });
 
 					}

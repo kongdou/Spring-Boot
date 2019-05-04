@@ -18,7 +18,7 @@ public class JobScheduler {
 
 	@Autowired
 	SchedulerFactoryBean schedulerFactoryBean;
-
+	
 	/**
 	 * 调度所有job
 	 * @throws SchedulerException
@@ -27,6 +27,7 @@ public class JobScheduler {
 		Scheduler scheduler = schedulerFactoryBean.getScheduler();
 		//定时获取CSV文件
 		startFtpFetchCsvJob(scheduler);
+		
 		//定时查库
 		//startJob2(scheduler);
 	}

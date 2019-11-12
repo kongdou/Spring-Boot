@@ -11,6 +11,7 @@
 
 	<modules>
 		<module>jwt-common</module>
+		<module>user-service</module>
 	</modules>
 
 	<name>spring boot jwt</name>

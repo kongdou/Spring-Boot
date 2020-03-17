@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="fun.deepsky.mybatis.dao.UtiOperateHistoryDao">
+	<sql id="BASE_TABLE">
+		uti_operatehistory
+	</sql>
+
+	<sql id="BASE_COLUMN">
+		operateType,entity,entityKey1,entityKey2,entityKey3,entityKey4,entityKey5,entityKey6,entityKey7,entityKey8,flag
+	</sql>
+
+	<insert id="insert" parameterType="fun.deepsky.mybatis.model.UtiOperateHistory">
+		INSERT INTO
+		<include refid="BASE_TABLE" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			operateType,entity,
+			<if test="entityKey1 != null">
+				entityKey1,
+			</if>
+			<if test="entityKey2 != null">
+				entityKey2,
+			</if>
+			<if test="entityKey3 != null">
+				entityKey3,
+			</if>
+			<if test="entityKey4 != null">
+				entityKey4,
+			</if>
+			<if test="entityKey5 != null">
+				entityKey5,
+			</if>
+			<if test="entityKey6 != null">
+				entityKey6,
+			</if>
+			<if test="entityKey7 != null">
+				entityKey7,
+			</if>
+			<if test="entityKey8 != null">
+				entityKey8,
+			</if>
+			<if test="flag != null">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+			<if test="operateType != null">
+				#{operateType, jdbcType=INTEGER},
+			</if>
+			<if test="entity != null">
+				#{entity, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey1 != null">
+				#{entityKey1, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey2 != null">
+				#{entityKey2, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey3 != null">
+				#{entityKey3, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey4 != null">
+				#{entityKey4, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey5 != null">
+				#{entityKey5, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey6 != null">
+				#{entityKey6, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey7 != null">
+				#{entityKey7, jdbcType=VARCHAR},
+			</if>
+			<if test="entityKey8 != null">
+				#{entityKey8, jdbcType=VARCHAR},
+			</if>
+			<if test="flag != null">
+				#{flag, jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<select id="selectAllHistories" resultType="fun.deepsky.mybatis.model.UtiOperateHistory">
+		SELECT
+		<include refid="BASE_COLUMN" />
+		FROM
+		<include refid="BASE_TABLE" />
+	</select>
+
+</mapper>
